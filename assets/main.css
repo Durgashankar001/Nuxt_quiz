@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(11, 22, 34);
+}
+
+/* ....................nav style...................... */
+.nav {
+    width: 100%;
+    background-color: rgb(2, 74, 190);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    display: flex;
+    padding: 0.7rem 4rem;
+    font-size: 1.3rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav p {
+    cursor: pointer;
+}
+
+.nav p,
+.nav_list {
+    background-color: transparent;
+}
+
+.nav_list {
+    display: flex;
+}
+
+.nav_list a:hover {
+    color: #0c0d0f;
+}
+
+.nav_list p:not(:last-child) {
+    margin-right: 1.4rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/*......................... index.vue style................................. */
+.front_quiz {
+    width: 600px;
+    border: 3px solid red;
+    margin: auto;
+    margin-top: 2rem;
+    background-color: rgb(2, 29, 58);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 1rem;
+    border-radius: 12px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.front_quiz:last-child {
+    border: 1px solid rgb(4, 123, 250);
+}
+
+.plus {
+    border: 1px solid rgb(4, 123, 250);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 0.5rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(11, 22, 34);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* .....................signup & signin Page style..........................*/
+.signup h1 {
+    text-align: center;
+    font-weight: 600;
+    color: #047bfa;
+    margin-top: 2rem;
+
+}
+
+.my_form form {
+    width: 500px;
+    padding: 1.5rem 3rem;
+    padding-top: 2.5rem;
+    margin: auto;
+    margin-top: 3rem;
+    background-color: rgb(2, 29, 58);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 10px;
+}
+
+.my_form form:last-child {
+    border: 1px solid rgb(4, 123, 250);
+}
+
+.my_form form input {
+    width: 100%;
+    outline: none;
+    color: black;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 30px;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+
+.my_form form p {
+    text-align: right;
+    color: white;
+}
+
+.my_form form a {
+    color: #047bfa;
+}
+
+.my_form form label {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.my_form form .btn {
+    width: 50%;
+    display: block;
+    cursor: pointer;
+    margin: auto;
+    background-color: rgb(2, 29, 58);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    color: aliceblue;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+.my_form form .btn:last-child {
+    border: 1px solid rgb(2, 90, 254);
+}
+
+/* ........................Question Component Style ........................*/
+.question {
+    width: 500px;
+    background-color: rgb(2, 29, 58);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    margin: auto;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgb(2, 90, 254);
+    overflow-y: scroll;
+    max-height: 75vh;
+}
+
+.blink {
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgb(1, 26, 52);
+    padding-top: 5px;
+    font-family: 'Poppins';
+    font-style: italic;
+}
+
+.question_flex {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    width: 95%;
+    margin: auto;
+}
+
+.question_input {
+    width: 300px;
+    padding-bottom: 0.6rem;
+}
+
+.question_input label {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.question_input input {
+    width: 100%;
+    outline: none;
+    color: black;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 30px;
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-top: 10px;
+}
+
+.question_input hr {
+    margin-bottom: 1rem;
+}
+
+.question_details h1 {
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.question_details span {
+    color: rgb(254, 61, 61);
+}
+
+.question_add {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.question_add input {
+    width: 100%;
+    outline: none;
+    color: black;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 30px;
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-top: 10px;
+}
+
+.question_add .btn {
+    width: 100px;
+    cursor: pointer;
+    cursor: pointer;
+}
+
+.btn_last {
+    width: 150px;
+    color: black;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 30px;
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.option_list {
+    width: 300px;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding-right: 0.3rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.3rem;
+    margin: 0.4rem 0;
+}
+
+.cross {
+    cursor: pointer;
+}
+
+.preview {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(2, 29, 58);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    margin: auto;
+    border: 1px solid rgb(2, 90, 254);
+    height: 87vh;
+    overflow-y: scroll;
+}
+.preview h2{
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+}
+.preview h1{
+    margin-top: 10px;
+}
+
+.preview_question {
+    width: 100%;
+    background-color: rgb(2, 29, 58);
+    border-bottom: 1px solid rgb(2, 90, 254);
+    padding: 0.8rem
+}
+
+.preview_question p {
+    text-align: left;
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 0.6rem;
+}
+
+.preview_question li {
+    color: white;
+    padding-left: 1rem;
+    list-style-position: inside;
+    font-size: 1.1rem;
+}
+
+.preview_question span,
+.correct {
+    color: white;
+    margin-top: 0.5rem;
+}
+
+.preview::-webkit-scrollbar {
+    display: none;
+}
+
+.question::-webkit-scrollbar {
+    display: none;
+}
+
+.preview h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.quiz_submit,
+.copy {
+    text-align: center;
+    color: white;
+    padding: 2px 10px;
+    background-color: rgb(2, 29, 58);
+    border: 1px solid rgb(2, 90, 254);
+    width: max-content;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.copy {
+    padding: 5px 15px;
+}
+
+/*.................The Quiz Component style.................*/
+.quiz_heading {
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+}
+.note{
+    text-align: center;
+    color: white;
+    margin: 1.5rem 0;
+}
+
+.quiz_box {
+    width: 500px;
+    background-color: rgb(2, 29, 58);
+    border: 1px solid rgb(2, 90, 254);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 1.2rem;
+    padding-right: 2rem;
+}
+
+.title {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.list {
+    padding-left: 1.5rem;
+    color: white;
+    font-size: 1rem;
+    margin-top: 1.3rem;
+}
+
+.list .green {
+    padding: 6px 15px;
+    border-radius: 8px;
+    background-color: #deedfe;
+    margin-top: 0.6rem;
+    cursor: pointer;
+    color: #0c0d0f;
+    font-weight: 500;
+}
+.list .green.active{
+    background-color: green;
+    color: white;
+}
+
+.quiz_box hr {
+    margin-top: 1rem;
+}
+
+.quiz_box button {
+    margin-top: 1rem;
+    padding: 5px 12px;
+    background-color: rgb(2, 29, 58);
+    border: 1px solid rgb(2, 90, 254);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+
+/*...................... MediaQuery ......................*/
+@media only screen and (max-width: 720px) {
+    .nav{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .front_quiz {
+        width: 98%;
+        font-size: 1.4rem;
+    }
+
+    .my_form form {
+        width: 96%;
+        padding: 1rem;
+    }
+    .quiz_box{
+        width: 96%;
+        margin: auto;
+    }
+    .question_flex{
+        width: 100%;
+       grid-template-columns: 1fr;
+    }
+    .question{
+        width: 100%;
+    }
+}
