@@ -150,7 +150,7 @@ export default {
                         .then((res) => {
                             alert("Quiz Created successfull")
                             this.quiz_title = "",
-                            this.copy_text=`http://localhost:3000/quiz/${res.id}`,
+                            this.copy_text=`https://nuxt-quiz-six.vercel.app/quiz/${res.id}`,
                             this.copy=true
                         })
                         .catch((e) => {
