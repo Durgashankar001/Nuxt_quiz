@@ -323,6 +323,13 @@ a {
     color: white;
     margin-top: 0.5rem;
 }
+.correct{
+    width: 100%;
+    letter-spacing: 1px;
+    justify-content: space-between;
+    padding-right: 8px;
+    display: flex;
+}
 
 .preview::-webkit-scrollbar {
     display: none;

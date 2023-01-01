@@ -1,6 +1,7 @@
 <template>
     <Nav_Element />
-    <marquee class="blink" behavior="scroll">Please refresh your page after completing your full quiz because we are not saving your quiz before you click SUBMIT button, Thank You and you Welcome!</marquee>
+    <marquee class="blink" behavior="scroll">Please refresh your page after completing your full quiz because we are not
+        saving your quiz before you click SUBMIT button, Thank You and you Welcome!</marquee>
     <div class="question_flex">
         <div>
             <div class="question">
@@ -45,6 +46,7 @@
             <div class="btn_flex">
                 <h1 class="quiz_submit" @click="handleQuizSubmit">Submit this Quiz</h1>
                 <button class="copy" v-if="copy" @click="copyText">copy link</button>
+                <button class="copy" v-if="copy" @click="openLink">open link</button>
             </div>
         </div>
 
@@ -57,7 +59,8 @@
                     <li v-for="(option, index) in data.options">{{ option }}</li>
                 </ul>
                 <div class="correct">
-                    Correct Answer : <span v-for="(e, i) in data.correct">{{ e }},</span>
+                    <div>Correct Answer : <span v-for="(e, i) in data.correct">{{ e }},</span></div>
+                    <div class="cross" @click="handleDeletequestionPreview(index)">x</div>
                 </div>
             </div>
         </div>
@@ -69,6 +72,7 @@ import Nav_Element from '~~/components/nav.vue';
 export default {
     data() {
         return {
+            user_id: null,
             user: null,
             addQuestion: false,
             quiz_title: "",
@@ -79,8 +83,8 @@ export default {
             correct_answer: false,
             correct_answer_arr: [],
             correct_question_name: "",
-            copy:false,
-            copy_text:"",
+            copy: false,
+            copy_text: "",
         }
     },
     components: {
@@ -92,11 +96,22 @@ export default {
             return navigateTo("/registration/signin")
         }
     },
+    beforeMount: function () {
+        this.user_id = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("_t_o_k_e_n_")) : null
+    },
     methods: {
         handleUpdate() {
+            if (this.question_name == "") {
+                alert("Question can't be Empty !")
+                return
+            }
             this.addQuestion ? this.addQuestion = false : this.addQuestion = true
         },
         handleOptionPush() {
+            if (this.option_name == "") {
+                alert("Option Field can't be empty")
+                return
+            }
             this.optionArray.push(this.option_name)
             this.option_name = ""
             this.correct_answer = true
@@ -108,6 +123,10 @@ export default {
             this.correct_answer_arr.splice(index, 1)
         },
         handleAnswerPush() {
+            if (this.correct_question_name == "") {
+                alert("Correct answer fied can't be empty")
+                return
+            }
             this.correct_answer_arr.push(this.correct_question_name)
             this.correct_question_name = ""
         },
@@ -134,15 +153,21 @@ export default {
             }
         },
         async handleQuizSubmit() {
-            if (this.quiz_title == "") {
+            const id = JSON.parse(localStorage.getItem("_t_o_k_e_n_"))
+            if (this.user_id == null) {
+                alert("Please login first to upload quiz")
+            }
+            else if (this.quiz_title == "") {
                 alert("Please add a title to your quiz")
             } else if (this.questionArr.length <= 4) {
                 alert("Please add more than or equal to 5 questions")
-            } else {
+            }
+            else {
                 try {
                     await $fetch("/api/quizs", {
                         method: "POST",
                         body: {
+                            user_id: this.user_id,
                             title: this.quiz_title,
                             questions: this.questionArr,
                         }
@@ -150,8 +175,8 @@ export default {
                         .then((res) => {
                             alert("Quiz Created successfull")
                             this.quiz_title = "",
-                            this.copy_text=`https://nuxt-quiz-six.vercel.app/quiz/${res.id}`,
-                            this.copy=true
+                                this.copy_text = `https://nuxt-quiz-six.vercel.app/quiz/${res.id}`,
+                                this.copy = true
                         })
                         .catch((e) => {
                             console.log(e)
@@ -162,11 +187,20 @@ export default {
             }
 
         },
-        copyText(){
-            if(this.copy){
-            navigator.clipboard.writeText(this.copy_text)
-            alert("link Copied to clipBoard")
-            }  
+        handleDeletequestionPreview(index) {
+            this.questionArr.splice(index, 1)
+        },
+        copyText() {
+            if (this.copy) {
+                navigator.clipboard.writeText(this.copy_text)
+                alert("link Copied to clipBoard")
+            }
+        },
+        openLink() {
+            const link = document.createElement('a')
+            link.href = this.copy_text
+            link.target = '_blank'
+            link.click()
         }
 
     }

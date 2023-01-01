@@ -50,6 +50,7 @@ export default {
                     })
                     .catch((e) => {
                         console.log(e)
+                        alert("Invalid Credential ! Please check your email and password")
                     })
             } catch (e) {
                 alert("something went wrong.Please try after some time")
