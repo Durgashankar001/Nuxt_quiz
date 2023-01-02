@@ -1,8 +1,9 @@
 <template>
     <h1 class="quiz_heading">The Quiz</h1>
-    <p class="note">( Some Questions may have multiple options Please answer it by this way )</p>
+    <p class="note">( Some Questions may have multiple correct answers Please answer it by this way )</p>
     <div v-if="quizCompleted" class="quiz_box result">Your Score : {{ score + "/" + data.questions.length }}</div>
     <div v-else class="quiz_box">
+        <h1>{{ data.title }}</h1>
         <p class="title">{{ current_question + 1 }}. {{ data.questions[current_question].name }} ?</p>
         <div class="list">
             <p class="green" :class="{ active: selected.includes(i) }" @click="handleClick(i, e, current_question)"

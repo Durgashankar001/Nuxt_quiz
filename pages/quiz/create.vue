@@ -4,6 +4,7 @@
         saving your quiz before you click SUBMIT button, Thank You and you Welcome!</marquee>
     <div class="question_flex">
         <div>
+            <div v-for="(e, i) in data">Hello World</div>
             <div class="question">
                 <div class="question_input">
                     <label for="">Quiz Name !</label>
@@ -72,6 +73,7 @@ import Nav_Element from '~~/components/nav.vue';
 export default {
     data() {
         return {
+            intial_Data: [],
             user_id: null,
             user: null,
             addQuestion: false,
@@ -153,14 +155,15 @@ export default {
             }
         },
         async handleQuizSubmit() {
+            this.getInitialData()
             const id = JSON.parse(localStorage.getItem("_t_o_k_e_n_"))
-            if (this.user_id == null) {
+            if (id == null) {
                 alert("Please login first to upload quiz")
             }
             else if (this.quiz_title == "") {
                 alert("Please add a title to your quiz")
-            } else if (this.questionArr.length <= 4) {
-                alert("Please add more than or equal to 5 questions")
+            } else if (this.questionArr.length < 1 || this.questionArr.length > 10) {
+                alert("Question list can't be less than 1 or more than 10")
             }
             else {
                 try {
@@ -201,8 +204,7 @@ export default {
             link.href = this.copy_text
             link.target = '_blank'
             link.click()
-        }
-
+        },
     }
 }
 </script>
