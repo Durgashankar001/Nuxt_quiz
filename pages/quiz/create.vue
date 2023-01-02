@@ -155,7 +155,6 @@ export default {
             }
         },
         async handleQuizSubmit() {
-            this.getInitialData()
             const id = JSON.parse(localStorage.getItem("_t_o_k_e_n_"))
             if (id == null) {
                 alert("Please login first to upload quiz")
