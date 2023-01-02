@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <p>
-            <NuxtLink to="/">Edigistify</NuxtLink>
+            <NuxtLink to="/">Edgistify</NuxtLink>
         </p>
         <div v-if="user !== null" class="nav_list">
             <p>{{ user }}</p>
