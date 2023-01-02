@@ -4,7 +4,7 @@
         saving your quiz before you click SUBMIT button, Thank You and you Welcome!</marquee>
     <div class="question_flex">
         <div>
-            <div v-for="(e, i) in data">Hello World</div>
+
             <div class="question">
                 <div class="question_input">
                     <label for="">Quiz Name !</label>
@@ -65,12 +65,31 @@
                 </div>
             </div>
         </div>
+        <div class="preview">
+            <h2>Your Saved Quiz</h2>
+            <div class="allquizBlock">
+                <div v-for="(e, i) in quiz" class="signleQuiz">
+                    <h3>{{ e.title }} <button class="copy"  @click="copyTextQuiz(e._id)">copy link</button> </h3>
+                    <div class="cross" @click="handleDeletequiz(e._id)">x</div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import Nav_Element from '~~/components/nav.vue';
 export default {
+    async setup() {
+        const token = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("_t_o_k_e_n_")) : null
+        if (token) {
+            const { data: quiz } = await useFetch(`/api/users/${token}`)
+            console.log(quiz)
+            return {
+                quiz
+            }
+        }
+    },
     data() {
         return {
             intial_Data: [],
@@ -192,6 +211,24 @@ export default {
         handleDeletequestionPreview(index) {
             this.questionArr.splice(index, 1)
         },
+        async handleDeletequiz(id) {
+            try {
+                await $fetch(`/api/quizs/${id}`, {
+                    method: "DELETE",
+                })
+                    .then((res) => {
+                        alert("Quiz Deleted successfull")
+                        typeof window !== 'undefined' ? window.location.reload() : nulll
+                    })
+                    .catch((e) => {
+                        console.log(e)
+                        alert("something went wrong.Please try after some time")
+                    })
+            } catch (e) {
+                alert("something went wrong.Please try after some time")
+            }
+
+        },
         copyText() {
             if (this.copy) {
                 navigator.clipboard.writeText(this.copy_text)
@@ -203,6 +240,10 @@ export default {
             link.href = this.copy_text
             link.target = '_blank'
             link.click()
+        },
+        copyTextQuiz(id){
+            navigator.clipboard.writeText(`https://nuxt-quiz-six.vercel.app/quiz/${id}`)
+            alert("link Copied to clipBoard")
         },
     }
 }

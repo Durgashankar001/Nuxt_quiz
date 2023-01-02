@@ -175,10 +175,11 @@ a {
 
 .question_flex {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
     width: 95%;
     margin: auto;
+    gap: 1.5rem;
 }
 
 .question_input {
@@ -362,6 +363,18 @@ a {
 
 .copy {
     padding: 5px 15px;
+}
+
+.allquizBlock .signleQuiz{
+    background-color: rgb(2, 29, 58);
+    border: 2px solid rgb(2, 90, 254);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    margin: 15px 0;
+    border-radius: 8px;
 }
 
 /*.................The Quiz Component style.................*/
