@@ -42,11 +42,15 @@ export default {
                     }
                 })
                     .then((res) => {
-                        alert("Registration successfull")
-                        this.name = "",
-                            this.email = "",
-                            this.password = ""
-                        navigateTo('/registration/signin')
+                        if (res.message == "Email is already exist try using different email") {
+                            alert("Email is already exist try using different email")
+                        } else {
+                            alert("Registration successfull")
+                            this.name = "",
+                                this.email = "",
+                                this.password = ""
+                            navigateTo('/registration/signin')
+                        }
                     })
                     .catch((e) => {
                         console.log(e)
